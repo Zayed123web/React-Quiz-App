@@ -57,7 +57,7 @@ export default class QuizApp extends Component {
           <div className="d-flex justify-content-center row">
             <div className="col-md-10 col-lg-10">
               <div className="border">
-                <QuizHeader />
+                <QuizHeader total={quizes} current={currentQuestion} />
                 {!this.state.startQuiz ? (
                   <StartQuizBtn data={this.startBtnHandler} />
                 ) : (
