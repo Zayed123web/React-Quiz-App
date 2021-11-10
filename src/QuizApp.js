@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import QuizHeader from "./components/QuizHeader";
 import QuizQuestion from "./components/QuizQuestion";
-import QuizTrigger from "./components/QuizTrigger";
 import StartQuizBtn from "./components/StartQuizBtn";
 import { shuffle } from "./uties";
 
@@ -33,6 +32,23 @@ export default class QuizApp extends Component {
     // console.log(this.state.quizes);
   };
 
+  navigateNextHandler = () => {
+    // this.setState({
+    //   currentQuestion: this.state.currentQuestion + 1,
+    // });
+    this.setState((prevState) => ({
+      currentQuestion: prevState.currentQuestion + 1,
+      currentAnswers: shuffle(prevState.quizes[prevState.currentQuestion + 1]),
+    }));
+  };
+
+  navigatePrevHandler = () => {
+    this.setState((prevState) => ({
+      currentQuestion: prevState.currentQuestion - 1,
+      currentAnswers: shuffle(prevState.quizes[prevState.currentQuestion - 1]),
+    }));
+  };
+
   render() {
     const { quizes, currentQuestion, currentAnswers } = this.state;
     return (
@@ -46,11 +62,12 @@ export default class QuizApp extends Component {
                   <StartQuizBtn data={this.startBtnHandler} />
                 ) : (
                   <QuizQuestion
+                    prev={this.navigatePrevHandler}
+                    next={this.navigateNextHandler}
                     ans={currentAnswers}
                     quiz={quizes[currentQuestion]}
                   />
                 )}
-                <QuizTrigger />
               </div>
             </div>
           </div>
