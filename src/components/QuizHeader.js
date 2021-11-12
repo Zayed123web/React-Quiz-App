@@ -3,7 +3,6 @@ import React, { Component } from "react";
 export default class QuizHeader extends Component {
   render() {
     const { total, current } = this.props;
-    console.log(total, current);
     return (
       <div className="question bg-white p-3 border-bottom">
         <div className="d-flex flex-row justify-content-between align-items-center mcq">

@@ -12,7 +12,7 @@ export default class QuizQuestion extends Component {
   };
 
   render() {
-    const { quiz, ans } = this.props;
+    const { quiz, ans, selectedAns } = this.props;
     // console.log(quiz, ans, next);
     return (
       <>
@@ -22,7 +22,7 @@ export default class QuizQuestion extends Component {
             <h5 className="mt-1 ml-2">{quiz?.question}</h5>
           </div>
           {ans.map((ans, index) => (
-            <AnswerCard key={index} ans={ans} />
+            <AnswerCard selectedAns={selectedAns} key={index} ans={ans} />
           ))}
         </div>
         <div className="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
